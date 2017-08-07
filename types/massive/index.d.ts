@@ -1,4 +1,4 @@
-// Type definitions for massive 3.0
+// Type definitions for massive 3.1
 // Project: https://github.com/dmfay/massive-js.git
 // Definitions by: Pascal Birchler <https://github.com/swissspidy>
 //                 Clarence Ho <https://github.com/clarenceh>
@@ -11,8 +11,8 @@ export = massive;
 
 declare function massive(
   connection: massive.ConnectionInfo | string,
-  loaderConfig?: object,
-  driverConfig?: object): Promise<massive.Database>;
+  loaderConfig?: Object,
+  driverConfig?: Object): Promise<massive.Database>;
 
 declare namespace massive {
   interface ConnectionInfo {
@@ -45,25 +45,25 @@ declare namespace massive {
   }
 
   interface Table<T> {
-    find(criteria: object | {}, queryOptions?: QueryOptions): Promise<T[]>;
-    findOne(criteria: number | object, queryOptions?: QueryOptions): Promise<T>;
-    count(criteria: object): Promise<string>;
-    where(query: string, params: any[] | object): Promise<T[]>;
+    find(criteria: Object | {}, queryOptions?: QueryOptions): Promise<T[]>;
+    findOne(criteria: number | Object, queryOptions?: QueryOptions): Promise<T>;
+    count(criteria: Object): Promise<string>;
+    where(query: string, params: any[] | Object): Promise<T[]>;
     search(criteria: SearchCriteria, queryOptions?: QueryOptions): Promise<any>;
-    save(data: object): Promise<T>;
-    insert(data: object): Promise<T>;
-    insert(data: object[]): Promise<T[]>;
-    update(dataOrCriteria: object, changesMap?: object): Promise<T>;
-    update(dataOrCriteria: object[], changesMap?: object): Promise<T[]>;
-    destroy(criteria: object): Promise<T[]>;
+    save(data: Object): Promise<T>;
+    insert(data: Object): Promise<T>;
+    insert(data: Object[]): Promise<T[]>;
+    update(dataOrCriteria: Object, changesMap?: Object): Promise<T>;
+    update(dataOrCriteria: Object[], changesMap?: Object): Promise<T[]>;
+    destroy(criteria: Object): Promise<T[]>;
   }
 
   interface Document {
-    countDoc(criteria: object): Promise<number>;
-    findDoc(criteria: number | string| object): Promise<object>;
-    searchDoc(criteria: SearchCriteria): Promise<object[]>;
-    saveDoc(doc: object): Promise<object>;
-    modify(docId: number | string, doc: object, fieldName?: string): Promise<object>;
+    countDoc(criteria: Object): Promise<number>;
+    findDoc(criteria: number | string| Object): Promise<Object>;
+    searchDoc(criteria: SearchCriteria): Promise<Object[]>;
+    saveDoc(doc: Object): Promise<Object>;
+    modify(docId: number | string, doc: Object, fieldName?: string): Promise<Object>;
   }
 
   interface Database {
@@ -71,12 +71,12 @@ declare namespace massive {
     detach(entity: string, collection: string): void;
     reload(): void;
     query(query: any, params: any, options: any): Promise<any>;
-    saveDoc(collectionName: string, doc: object): Promise<any>;
+    saveDoc(collectionName: string, doc: Object): Promise<any>;
     createDocumentTable(path: any): Promise<any>;
-    getObject(path: any, collection: any): object;
+    getObject(path: any, collection: any): Object;
     dropTable(table: string, options: any): void;
     createSchema(schemaName: string): void;
     dropSchema(schemaName: string, options: any): void;
-    run(query: string, params: any[] | object): Promise<object[]>;
+    run(query: string, params: any[] | Object): Promise<Object[]>;
   }
 }
